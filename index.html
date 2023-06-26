@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Propiedades del DOM</title>
 </head>
-<body id="page1">
+<body id="page1" algo = "no estandar">
+
+    <div id="elem" about = "Elefante"></div>
+    <input type="text">
 
 
     <script>
@@ -15,6 +18,72 @@
             title: "Emperador Romano"
         };
         console.log(document.body.myData.name);
+
+        document.body.getTag = function(){
+            console.log(this.tagName);
+        };
+
+        document.body.getTag();
+
+        console.log(document.body.id)
+        console.log(document.body.id.algo) 
+
+        // elem.hasAttribute(nombre): true - false
+        // elem.getAttribute(nombre): obtiene el valor
+        // elem.setAttribute(nombre): establece el valor
+        // elem.removeAttribute(nombre): elimina el atributo
+
+        if (document.body.hasAttribute('algo')){
+            console.log('contiene el atributo "algo"');
+            console.log(document.body.getAttribute('algo'));
+        }
+
+        let elem = document.body.querySelector('#elem');
+        console.log(elem.hasAttribute('About'));
+        console.log(elem.getAttribute('about'));
+        elem.setAttribute('data', 123);
+
+        // Averiguar si elem tiene el atributo 'data' y si lo tiene imprimirlo en consola
+        if(elem.hasAttribute('data')){
+            console.log(elem.getAttribute('data'));
+        }
+        elem.removeAttribute('data');
+        if(elem.hasAttribute('data')){
+            console.log(elem.getAttribute('data'));
+        }else{
+            console.log('No existe el atributo')
+        }
+
+        // Agregar el atributo 'data-text' con el valor texto de prueba
+
+        elem.setAttribute('data-text','texto de prueba');
+        console.log(elem.getAttribute('data-text'));
+
+        for(let atributo of elem.attributes){
+            console.log(`${atributo.name} ${atributo.value}`);
+        }
+
+        let input =document.querySelector('input');
+        input.setAttribute('id', 'inputId');
+        console.log(input.getAttribute('id'));
+        input.id = 'nuevoId';
+        console.log(input.getAttribute('id'));
+
+
+        input.setAttribute('value', 'Texto de prueba');
+        console.log(input.getAttribute('value'));
+        console.log(input.value);
+
+        input.value = 'Otro Texto';
+        console.log(input.getAttribute('value'));
+
+        input.setAttribute('value', 'Texto final');
+        console.log(input.getAttribute('value'));
+
+
+
+
+
     </script>
     
 </body>
